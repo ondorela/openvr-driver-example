@@ -48,9 +48,15 @@
     <None Include="resources\controller_profile.json">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="resources\game_controller.svg" />
-    <None Include="resources\legacy_bindings_example.json" />
-    <None Include="resources\driver.vrdrivermanifest" />
+    <None Include="resources\driver.vrdrivermanifest">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\game_controller.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\legacy_bindings_example.json">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\openvr_api.lib" />

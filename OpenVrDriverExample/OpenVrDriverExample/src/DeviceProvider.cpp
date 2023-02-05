@@ -2,38 +2,39 @@
 
 EVRInitError DeviceProvider::Init(IVRDriverContext* pDriverContext)
 {
-    EVRInitError initError = InitServerDriverContext(pDriverContext);
-    if (initError != EVRInitError::VRInitError_None)
-    {
-        return initError;
-    }
-    
-    VRDriverLog()->Log("Initializing example controller"); //this is how you log out Steam's log file.
+  EVRInitError initError = InitServerDriverContext(pDriverContext);
+  if (initError != EVRInitError::VRInitError_None)
+  {
+    return initError;
+  }
 
-    controllerDriver = new ControllerDriver();
-    VRServerDriverHost()->TrackedDeviceAdded("example_controller", TrackedDeviceClass_Controller, controllerDriver); //add all your devices like this.
+  VRDriverLog()->Log("Initializing example controller"); //this is how you log out Steam's log file.
 
-    return vr::VRInitError_None;
+  controllerDriver = new ControllerDriver();
+  VRServerDriverHost()->TrackedDeviceAdded( "example_controller", TrackedDeviceClass_Controller, controllerDriver ); //add all your devices like this.
+
+  return vr::VRInitError_None;
 }
 
 void DeviceProvider::Cleanup()
 {
-    delete controllerDriver;
-    controllerDriver = NULL;
+  delete controllerDriver;
+  controllerDriver = NULL;
 }
+
 const char* const* DeviceProvider::GetInterfaceVersions()
 {
-    return k_InterfaceVersions;
+  return k_InterfaceVersions;
 }
 
 void DeviceProvider::RunFrame()
 {
-    controllerDriver->RunFrame();
+  controllerDriver->RunFrame();
 }
 
 bool DeviceProvider::ShouldBlockStandbyMode()
 {
-    return false;
+  return false;
 }
 
 void DeviceProvider::EnterStandby() {}
